@@ -216,6 +216,7 @@ namespace Content.Client.Lobby.UI
             {
                 SexButton.SelectId(args.Id);
                 SetSex((Sex) args.Id);
+                SetGender((Gender) args.Id);
             };
 
             #endregion Sex
@@ -231,21 +232,6 @@ namespace Content.Client.Lobby.UI
             };
 
             #endregion Age
-
-            #region Gender
-
-            PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-male-text"), (int) Gender.Male);
-            PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-female-text"), (int) Gender.Female);
-            PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-epicene-text"), (int) Gender.Epicene);
-            PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-neuter-text"), (int) Gender.Neuter);
-
-            PronounsButton.OnItemSelected += args =>
-            {
-                PronounsButton.SelectId(args.Id);
-                SetGender((Gender) args.Id);
-            };
-
-            #endregion Gender
 
 
             // ADT Barks Start
@@ -1001,7 +987,6 @@ namespace Content.Client.Lobby.UI
             UpdateNameEdit();
             UpdateFlavorTextEdit();
             UpdateSexControls();
-            UpdateGenderControls();
             UpdateSkinColor();
             UpdateSpawnPriorityControls();
             UpdateAgeEdit();
@@ -1517,16 +1502,14 @@ namespace Content.Client.Lobby.UI
                     break;
             }
 
-            UpdateGenderControls();
             UpdateTTSVoicesControls(); // Corvax-TTS
             Markings.SetSex(newSex);
             ReloadPreview();
         }
 
-        private void SetGender(Gender newGender)
+        private void SetGender(Gender newgender)
         {
-            Profile = Profile?.WithGender(newGender);
-            ReloadPreview();
+            return;
         }
 
         // Corvax-TTS-Start
@@ -1747,16 +1730,6 @@ namespace Content.Client.Lobby.UI
             Markings.SetData(Profile.Appearance.Markings, Profile.Species,
                 Profile.Sex, Profile.Appearance.SkinColor, Profile.Appearance.EyeColor
             );
-        }
-
-        private void UpdateGenderControls()
-        {
-            if (Profile == null)
-            {
-                return;
-            }
-
-            PronounsButton.SelectId((int) Profile.Gender);
         }
 
         private void UpdateSpawnPriorityControls()

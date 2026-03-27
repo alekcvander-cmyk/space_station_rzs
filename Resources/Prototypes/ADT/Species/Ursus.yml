@@ -1,7 +1,7 @@
 - type: species
   id: UrsusSpecies
   name: species-name-ursus
-  roundStart: true
+  roundStart: false
   prototype: MobUrsus
   sprites: MobUrsusSprites
   defaultSkinTone: "#964B00"
