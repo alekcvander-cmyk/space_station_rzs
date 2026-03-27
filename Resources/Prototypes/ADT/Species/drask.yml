@@ -1,7 +1,7 @@
 - type: species
   id: DraskSpecies
   name: species-name-drask
-  roundStart: true
+  roundStart: false
   prototype: MobDrask
   sprites: MobDraskSprites
   defaultSkinTone: "#a3d4eb"
